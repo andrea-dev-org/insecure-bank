@@ -17,6 +17,8 @@ jobs:
         architecture: x64
     - name: Run tests
       run: mvn -B package
+    - name: Build Docker Image
+      run: docker build -t "$GITHUB_REPOSITORY:$GITHUB_RUN_NUMBER" .
     - name: Manifest Generation
       run: |
         export BILLY_SERVER=https://billy.codesec.aquasec.com
